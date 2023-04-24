@@ -1,1 +1,93 @@
-<button class="btn btn-primary"> asd</button>
+<div class="container">
+  <h1>Ajánlataink</h1>
+  <hr />
+  <div class="desktop">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Kategória</th>
+          <th>Leírás</th>
+          <th>Hirdetés dátuma</th>
+          <th>Tehermentes</th>
+          <th>Fénykép</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ing of ingatlanok">
+          <td>{{ ing.kategoria }}</td>
+          <td>{{ ing.leiras }}</td>
+          <td>{{ ing.hirdDatum }}</td>
+          <td>{{ ing.tehermentes }}</td>
+          <td>
+            <img
+              src="{{ ing.kepUrl }}"
+              alt="ingatlan kép"
+              class="img-responsive"
+              style="width: 200px"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mobile">
+    <div *ngFor="let ing2 of ingatlanok" class="col-xs-6" style="border: 1px solid black;">
+      <div class="row" style="background-color: grey">
+        <span>{{ ing2.kategoria }}</span>
+        <span class="spacer"></span>
+        <span>{{ ing2.hirdDatum }}</span>
+      </div>
+      <div class="row">
+        {{ ing2.leiras }}
+      </div>
+      <div class="row" style="text-align: center">
+        <img
+          src="{{ ing2.kepUrl }}"
+          alt="ingatlan kép"
+          class="img-responsive"
+        />
+      </div>
+      <hr />
+      <div style="text-align: center">
+        <button class="btn btn-primary">Érdekel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <hr>    
+  <div>
+    <form #form>
+        <div class="form-group">
+            <label for="kategoriaSelect">Ingatlan Kategóriája:</label>
+            <select name="kategoriaSelect" id="kategoriaSelect" class="form-control">
+               
+                    <option *ngFor="let kat of kategoriak" value="{{kat.id}}">{{kat.kategoria}}</option>
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="date" name="date" id="date" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="leiras">Leírás</label>
+            <textarea name="leiras" id="leir" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox">Tehermentes ingatlan</label>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="kepUrl">Kép url: </label>
+            <input type="text" name="kepUrl" id="kepUrl" class="form-control">
+        </div>
+        <div style="text-align: center;">
+
+            <button type="submit" class="btn btn-primary">Küldés</button>
+        </div>
+    </form>
+  </div>
+</div>

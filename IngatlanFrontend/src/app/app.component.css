@@ -1,0 +1,19 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.desktop {
+display: block;
+}
+.mobile {
+    display: none;
+    }
+
+@media only screen and (max-width: 800px) {
+    .desktop{
+        display: none;
+    }
+    .mobile {
+        display: block;
+        }
+}
